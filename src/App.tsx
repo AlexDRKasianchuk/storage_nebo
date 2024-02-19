@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { FC } from 'react';
 import './App.css';
+import { Navigation } from './Router/Navigation';
+import { Route, Routes } from 'react-router-dom';
+import { LocalStoragePage } from './Pages/StoragePage/Storage.component';
+import { IndexedPage } from './Pages/Indexed/Indexed.component';
+import { ReduxPage } from './Pages/LocalRedux/Storage.component';
 
-function App() {
+export const App: FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Navigation />
+       <Routes>
+        <Route path="local" element={<LocalStoragePage />} />
+        <Route path="indexed" element={<IndexedPage/>} />
+        <Route path="localRedux" element={<ReduxPage/>} />
+      </Routes>
     </div>
   );
 }
