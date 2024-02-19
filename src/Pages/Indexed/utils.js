@@ -1,21 +1,17 @@
-const DB_NAME = 'storeDB';
+const DB_NAME = 'storeD1';
 const DB_VERSION = 1;
-
-export const openDb = () => {
-    console.log("openDb ...");
-    var req = indexedDB.open(DB_NAME, DB_VERSION);
-    req.onsuccess = function (evt) {
-      console.log("openDb DONE");
-    };
-    return req;
-  }
 
 export const dropDb = () => {
     indexedDB.deleteDatabase(DB_NAME);
   }
 
 export const createTable = () => {
+    
     var request = indexedDB.open(DB_NAME, DB_VERSION);
+
+    request.onsuccess = function (evt) {
+      console.log("openDb DONE");
+    };
 
     request.onupgradeneeded = function(event) {
         var db = event.target.result;
